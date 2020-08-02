@@ -8,6 +8,7 @@ import Favorites from '../components/Favorites/';
 import TakeATour from '../components/TakeATour/';
 import { trackEvent, ANALYTICS_EVENT_OPTS } from '../utils/analytics';
 import TabsDapps from '../components/TabsDapps';
+import { Box } from '@material-ui/core';
 
 const isMobile = {
   Android: function () {
@@ -50,6 +51,15 @@ export default class Home extends Component {
           </div>
           <div label="ETH">
             <ExploreDapps />
+          </div>
+          <div label="BTC">
+            <Box p={3}>Coming soon</Box>
+          </div>
+          <div label="BTM">
+            <Box p={3}>Coming soon</Box>
+          </div>
+          <div label="OKChain">
+            <Box p={3}>Coming soon</Box>
           </div>
         </Tabs>
         {isMobile.any() ? <TakeATour /> : ''}

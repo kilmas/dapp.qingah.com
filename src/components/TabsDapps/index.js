@@ -38,9 +38,9 @@ function TitlebarGridList({ data }) {
     <div className={classes.root}>
       <GridList cellHeight="auto" className={classes.gridList}>
         {data.map((tile) => (
-          <GridListTile key={tile.img} component={Link} href={tile.url}>
+          <GridListTile key={tile.id} component={Link} href={tile.url}>
             <div className={classes.imgBox}>
-              <img src={`https://static.fowallet.net/1.0/fileProc/${tile.img}`} alt={tile.title} />
+              <img src={`http://static.fowallet.net/1.0/fileProc/${tile.img}`} alt={tile.title} />
             </div>
             <GridListTileBar
               title={tile.name}
@@ -53,9 +53,15 @@ function TitlebarGridList({ data }) {
   );
 }
 
+let localDapps = localStorage.getItem('foDapps')
+if (localDapps) {
+  localDapps = JSON.parse(localDapps)
+} else {
+  localDapps = {}
+}
 const TabsDapps = () => {
 
-  const [foDapps, setFoDapps] = React.useState({})
+  const [foDapps, setFoDapps] = React.useState(localDapps)
   React.useEffect(() => {
     async function fetchData() {
       const foDappsData = await postData('https://dapp.fo/1.0/app/tagdapps/getAllDapp', {
@@ -74,12 +80,13 @@ const TabsDapps = () => {
         })
       });
       setFoDapps(dapps)
+      localStorage.setItem('foDapps', JSON.stringify(dapps))
     }
     fetchData();
   }, [])
   return (<Tabs orientation="vertical">
       {Object.keys(foDapps).map(
-        key => <div label={key}>
+        key => <div label={key} key={key}>
           <TitlebarGridList data={foDapps[key]} />
         </div>
       )}
