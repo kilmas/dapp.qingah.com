@@ -14,7 +14,7 @@ export default class DappCategory extends Component {
 
   render() {
     const { name, icon, color } = this.props.data;
-    const url = `/${name.toLowerCase().replace(" ", "-")}`;
+    const url = `/eth/${name.toLowerCase().replace(" ", "-")}`;
 
     return (
       <Link

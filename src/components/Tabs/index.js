@@ -55,19 +55,21 @@ function a11yProps(index) {
   };
 }
 
-const TabsComponent = ({ children, orientation = "horizontal", ...props }) => {
+const acTab = localStorage.getItem('activeTab') || 0
+
+const TabsComponent = ({ children, activeTab = parseInt(acTab), orientation = "horizontal", ...props }) => {
   const classes = useStyles()
   const [state, setState] = React.useState({
-    activeTab: 0
+    activeTab
   })
   const onTabSelected = (tab, label) => {
+    localStorage.setItem('activeTab', tab)
     setState({ activeTab: tab });
     trackEvent(ANALYTICS_EVENT_OPTS.CLICKS_HOMEPAGE_TAB, { 'Tab': label });
   }
-  const { activeTab } = state
   return <div className={classes[orientation]}>
     <Tabs
-      value={activeTab}
+      value={state.activeTab}
       onChange={(event, newValue) => {
         onTabSelected(newValue, children[newValue].props.label)
       }}
@@ -88,8 +90,9 @@ const TabsComponent = ({ children, orientation = "horizontal", ...props }) => {
           />
         );
       })}
-    </Tabs> {React.Children.map(children, (child, index) => {
-      return <TabPanel value={activeTab} index={index} key={index.toString()} className={classes.tabPanel}>
+    </Tabs>
+    {React.Children.map(children, (child, index) => {
+      return <TabPanel value={state.activeTab} index={index} key={index.toString()} className={classes.tabPanel}>
         {child.props.children}
       </TabPanel>
     })}

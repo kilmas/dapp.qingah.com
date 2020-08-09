@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     overflow: 'hidden',
     width: '100%',
-    paddingBottom: '100%' /* 重要属性 */,
+    paddingBottom: '100%',
     '& img': {
       width: '100%',
       height: '100%',

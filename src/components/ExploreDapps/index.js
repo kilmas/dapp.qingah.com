@@ -4,11 +4,11 @@ import allDapps from '../../data/all-dapps';
 import { Box } from '@material-ui/core';
 
 
-const ExploreDapps = () => {
+const ExploreDapps = ({ dapps = allDapps }) => {
   return (
     <Box display="flex" alignContent="center" alignItems="center" flexWrap='wrap' m={3}>
       {
-        allDapps.map((dapp) => (
+        dapps.map((dapp) => (
           <DappCategory
             data={dapp}
             key={dapp.name}

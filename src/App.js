@@ -14,7 +14,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <div className={'animated-wrapper-rule'}>
             <AnimatedRoute
-              path="/:category"
+              path="/eth/:category"
               component={Category}
               atEnter={{ offset: 50, opacity: 0 }}
               atLeave={{ offset: 150, opacity: 1 }}
