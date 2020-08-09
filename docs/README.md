@@ -1,6 +1,6 @@
-# FO decentralized OTC
+# wallet broswer index.html
 
-> A fibos DAPP project
+> A qingah wallet project
 
 ## Build Setup
 
@@ -8,8 +8,8 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run serve
+# serve with hot reload at localhost:3080
+npm run start
 
 # build for production with minification
 npm run build
