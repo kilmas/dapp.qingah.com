@@ -51,7 +51,7 @@ export default class Home extends Component {
             <CommonDapps dapps={[
               { name: 'OKLink 区块浏览器', img: 'http://static.fowallet.net/1.0/fileProc/5a964114341f5e469f5acdde2272bc8e', url: "http://www.oklink.com" },
               { name: 'TokenView', img: 'http://static.fowallet.net/1.0/fileProc/0f4ccc76d30b51c48eed54ced7be6d4e', url: "https://tokenview.com/" },
-              { name: 'OpenDex', img: 'https://oss.bafang.com/blockchain/icon/eth/ETH_OKB.jpg', url: "http://www.oklink.com" }]} />
+              { name: 'OpenDex', img: 'https://oss.bafang.com/blockchain/icon/eth/ETH_OKB.jpg', url: "https://www.okex.me/dex-test/spot/trade" }]} />
           </div>
           <div label="FO">
             <TabsDapps />
