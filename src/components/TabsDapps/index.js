@@ -56,12 +56,10 @@ function TitlebarGridList({ data }) {
 let localDapps = localStorage.getItem('foDapps')
 if (localDapps) {
   localDapps = JSON.parse(localDapps)
-} else {
-  localDapps = {}
 }
 const TabsDapps = () => {
 
-  const [foDapps, setFoDapps] = React.useState(localDapps)
+  const [foDapps, setFoDapps] = React.useState(localDapps || {})
   React.useEffect(() => {
     async function fetchData() {
       const foDappsData = await postData('https://dapp.fo/1.0/app/tagdapps/getAllDapp', {
@@ -80,6 +78,7 @@ const TabsDapps = () => {
         })
       });
       setFoDapps(dapps)
+      if(!localDapps) localDapps = dapps
       localStorage.setItem('foDapps', JSON.stringify(dapps))
     }
     fetchData();
