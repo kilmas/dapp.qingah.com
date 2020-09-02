@@ -4,6 +4,7 @@ import { AnimatedRoute } from 'react-router-transition';
 import Home from './pages/Home';
 import Category from './pages/Category';
 import ScrollToTop from './components/ScrollToTop/';
+import QrCode from './pages/QrCode';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <ScrollToTop>
         <div className="App">
           <Route exact path="/" component={Home} />
+          <Route exact path="/qrcode" component={QrCode} />
           <div className={'animated-wrapper-rule'}>
             <AnimatedRoute
               path="/eth/:category"

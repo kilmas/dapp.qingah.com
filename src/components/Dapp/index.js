@@ -34,7 +34,7 @@ export default class Dapp extends Component {
         onClick={this.track}
       >
         <img
-          src={icon}
+          src={`.${icon}`}
           className={`dapp-logo ${size === 'small' ? 'dapp-logo-small' : ''}`}
           alt={`${name} logo`}
         />

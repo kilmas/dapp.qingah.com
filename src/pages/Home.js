@@ -12,7 +12,7 @@ import { Box } from '@material-ui/core';
 import CommonDapps from '../components/CommonDapps';
 import { getData } from '../utils/resquest';
 
-const isMobile = {
+export const isMobile = {
   Android: function () {
     return navigator.userAgent.match(/Android/i);
   },
