@@ -26,7 +26,7 @@ export default class Dapp extends Component {
 
 
   render() {
-    const { size, closable, data: { name, description, url, icon } } = this.props;
+    const { size, closable, data: { name, description, url, icon, image } } = this.props;
     return (
       <a
         className={'dapp'}
@@ -34,7 +34,7 @@ export default class Dapp extends Component {
         onClick={this.track}
       >
         <img
-          src={`.${icon}`}
+          src={image || `.${icon}`}
           className={`dapp-logo ${size === 'small' ? 'dapp-logo-small' : ''}`}
           alt={`${name} logo`}
         />

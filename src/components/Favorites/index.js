@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getHost } from '../../utils/browser';
 import Dapp from '../Dapp';
 import './index.css';
+import { Box } from '@material-ui/core';
 
 export default class Favorites extends Component {
   state = {
@@ -9,9 +10,8 @@ export default class Favorites extends Component {
   }
 
   componentDidMount() {
-    if (window.__mmFavorites) {
-      this.setState({ favorites: window.__mmFavorites.reverse() });
-    }
+    this.setState({ favorites: [{"name": "CROSS.FO", "url": "https://cross.fo/"}] });
+
 
     window.addEventListener('message', ({ data }) => {
       if (data === 'updateFavorites') {
@@ -31,22 +31,24 @@ export default class Favorites extends Component {
   renderFavorites() {
     return (
       <div className={'favorites'}>
-        {
-          this.state.favorites.map((dapp, i) => (
-            <Dapp
-              data={{
-                ...dapp,
-                icon: `https://api.faviconkit.com/${getHost(dapp.url)}/64`,
-                description: null
-              }}
-              key={`fav-${dapp.url}`}
-              size={'small'}
-              closable
-              onClose={this.onClose}
-              position={i}
-            />
-          ))
-        }
+        <Box m="1em">
+          {
+            this.state.favorites.map((dapp, i) => (
+              <Dapp
+                data={{
+                  ...dapp,
+                  image: `https://api.faviconkit.com/${getHost(dapp.url)}/64`,
+                  description: null
+                }}
+                key={`fav-${dapp.url}`}
+                size={'small'}
+                closable
+                onClose={this.onClose}
+                position={i}
+              />
+            ))
+          }
+        </Box>
       </div>
     );
   }
