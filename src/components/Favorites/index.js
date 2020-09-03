@@ -10,8 +10,9 @@ export default class Favorites extends Component {
   }
 
   componentDidMount() {
-    this.setState({ favorites: [{"name": "CROSS.FO", "url": "https://cross.fo/"}] });
-
+    if (window.__mmFavorites) {
+      this.setState({ favorites: window.__mmFavorites.reverse() });
+    }
 
     window.addEventListener('message', ({ data }) => {
       if (data === 'updateFavorites') {
