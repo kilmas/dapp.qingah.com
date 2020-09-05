@@ -28,6 +28,14 @@ export const isMobile = {
   Windows: function () {
     return navigator.userAgent.match(/IEMobile/i);
   },
+  isWeiXin() {
+    const ua = window.navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) === 'micromessenger') {
+      return true;
+    } else {
+      return false;
+    }
+  },
   any: function () {
     return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
   }
