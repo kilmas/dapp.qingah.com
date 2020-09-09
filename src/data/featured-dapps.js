@@ -7,6 +7,13 @@ export default [
     icon: './images/dapps/cross_fo.jpg'
   },
   {
+    url: 'https://dapp.review/',
+    name: 'Dapp',
+    shortName: 'Dapps',
+    description: 'Dapp review',
+    icon: 'https://dapp.review/favicon-32x32.png'
+  },
+  {
     url: 'https://uniswap.exchange/',
     name: 'Uniswap Exchange',
     shortName: 'Uniswap',

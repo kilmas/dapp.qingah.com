@@ -89,6 +89,9 @@ export default class Home extends Component {
             <div label="ETH">
               <ExploreDapps />
             </div>
+            <div label="EOS">
+              <Box p={3}><a href="https://eospark.com">EOSPark</a></Box>
+            </div>
             <div label="BTC">
               <Box p={3}>Coming soon</Box>
             </div>
