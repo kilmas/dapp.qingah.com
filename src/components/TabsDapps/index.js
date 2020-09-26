@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import { postData } from '../../utils/resquest';
 import Tabs from '../Tabs';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,11 +39,11 @@ function TitlebarGridList({ data }) {
         {data.map((tile) => (
           <GridListTile key={tile.id} component={Link} href={tile.url}>
             <div className={classes.imgBox}>
-              <img src={`http://static.fowallet.net/1.0/fileProc/${tile.img}`} alt={tile.title} />
+              <img src={`${tile.img}`} alt={tile.title} />
             </div>
             <GridListTileBar
-              title={tile.name}
-              // subtitle={<span>{tile.name}</span>}
+              title={tile.title}
+              subtitle={<span>{tile.subtitle}</span>}
             />
           </GridListTile>
         ))}
@@ -52,43 +51,13 @@ function TitlebarGridList({ data }) {
     </div>
   );
 }
-
-let localDapps = localStorage.getItem('foDapps')
-if (localDapps) {
-  localDapps = JSON.parse(localDapps)
-}
-const TabsDapps = () => {
-
-  const [foDapps, setFoDapps] = React.useState(localDapps || {})
-  React.useEffect(() => {
-    async function fetchData() {
-      const foDappsData = await postData('https://dapp.fo/1.0/app/tagdapps/getAllDapp', {
-        page: 1,
-        pageSize: 100
-      })
-      const dapps = {}
-      foDappsData.forEach(item => {
-        item.tags.forEach(tag => {
-          const { tag: { name } } = tag
-          if (dapps[name]) {
-            dapps[name].push(item)
-          } else {
-            dapps[name] = [item]
-          }
-        })
-      });
-      setFoDapps(dapps)
-      if(!localDapps) localDapps = dapps
-      localStorage.setItem('foDapps', JSON.stringify(dapps))
-    }
-    fetchData();
-  }, [])
-  return (<Tabs orientation="vertical">
-      {Object.keys(foDapps).map(
-        key => <div label={key} key={key}>
-          <TitlebarGridList data={foDapps[key]} />
-        </div>
-      )}
+const TabsDapps = ({ dapps = {}, name = "" }) => {
+  return (<Tabs orientation="vertical" name={name}>
+    {Object.keys(dapps).map(
+      key => <div label={key} key={key}>
+        <TitlebarGridList data={dapps[key]} />
+      </div>
+    )}
   </Tabs>
   )
 }

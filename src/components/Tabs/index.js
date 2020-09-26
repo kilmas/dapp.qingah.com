@@ -54,16 +54,17 @@ function a11yProps(index) {
     'aria-controls': `scrollable-auto-tabpanel-${index}`,
   };
 }
+// localStorage.getItem('activeTab') || 
+// const acTab = 0
 
-const acTab = localStorage.getItem('activeTab') || 0
-
-const TabsComponent = ({ children, activeTab = parseInt(acTab), orientation = "horizontal", ...props }) => {
+const TabsComponent = ({ children, activeTab, orientation = "horizontal", name, ...props }) => {
   const classes = useStyles()
+  const acTab = localStorage.getItem(`${name}_activeTab`) ||  0
   const [state, setState] = React.useState({
-    activeTab
+    activeTab: parseInt(acTab)
   })
   const onTabSelected = (tab, label) => {
-    localStorage.setItem('activeTab', tab)
+    localStorage.setItem(`${name}_activeTab`, tab)
     setState({ activeTab: tab });
     trackEvent(ANALYTICS_EVENT_OPTS.CLICKS_HOMEPAGE_TAB, { 'Tab': label });
   }
