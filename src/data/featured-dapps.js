@@ -7,6 +7,13 @@ export default [
     icon: './images/dapps/cross_fo.jpg'
   },
   {
+    url: 'https://did.socoin.me',
+    name: 'Socoin',
+    shortName: 'Socoin DID',
+    description: 'Socoin 区块链社交协议',
+    icon: 'https://did.socoin.me/static/media/DIDLogo.4bc859ef.svg'
+  },
+  {
     url: 'https://uniswap.exchange/',
     name: 'Uniswap Exchange',
     shortName: 'Uniswap',
